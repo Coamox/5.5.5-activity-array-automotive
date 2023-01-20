@@ -14,24 +14,40 @@ class Car extends VehicleModule
         this.scheduleService = false;
     }
 
+    //if passenger less than maximumPassengers then availableRoom == true
     loadPassenger(num)
     {
-
+        if((num + this.passengers) <= this.maxPassengers)
+        {
+            return this.availableRoom = true;
+        }
     }
 
+    //if fuel is greater than 0, then start == true
     start()
     {
-
+        if (this.fuel > 0)
+        {
+            return this.started = true;
+        }
+        else
+        {
+            return this.started = false;
+        }
     }
 
+    //if mileage is greater than 30000, time for maintenance == true
     checkService(mileage)
     {
-       
+       if(this.mileage > 30000)
+       {
+        return this.scheduleService = true;
+       }
     }
 
 
 }
 
 //this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
+let myNewCar = new Car("Mecury", "Sedan", "1965", "color", "mileage");
+console.log(myNewCar.make)
